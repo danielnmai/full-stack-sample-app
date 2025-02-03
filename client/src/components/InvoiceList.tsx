@@ -2,6 +2,7 @@ import {
   Container,
   Group,
   Modal,
+  Skeleton,
   Stack,
   Table,
   Text,
@@ -76,74 +77,76 @@ const InvoiceList = () => {
 
   return (
     <Container>
-      <Table highlightOnHover>
-        <Table.Thead className="bg-blue-100">
-          <Table.Tr>
-            <Table.Th>Date</Table.Th>
-            <Table.Th>Payee</Table.Th>
-            <Table.Th>Description</Table.Th>
-            <Table.Th>Due Date</Table.Th>
-            <Table.Th>Amount</Table.Th>
-            <Table.Th>Status</Table.Th>
-          </Table.Tr>
-        </Table.Thead>
-        <Table.Tbody>{rows}</Table.Tbody>
-      </Table>
-      <Modal
-        opened={opened}
-        onClose={onCloseModal}
-        title={<Title order={3}>Invoice Details</Title>}
-        overlayProps={{
-          backgroundOpacity: 0.3,
-        }}
-      >
-        <Container m={10}>
-          <Stack>
-            <Group>
-              <Text miw={120} fw={700}>
-                Created At:
-              </Text>
-              <Text>{formattedDate(selectedInvoice?.createdAt)}</Text>
-            </Group>
-            <Group>
-              <Text miw={120} fw={700}>
-                Updated At:
-              </Text>
-              <Text>{formattedDate(selectedInvoice?.updatedAt)}</Text>
-            </Group>
-            <Group>
-              <Text miw={120} fw={700}>
-                Vendor Name:
-              </Text>
-              <Text>{selectedInvoice?.vendorName}</Text>
-            </Group>
-            <Group>
-              <Text miw={120} fw={700}>
-                Description:
-              </Text>
-              <Text>{selectedInvoice?.description}</Text>
-            </Group>
-            <Group>
-              <Text miw={120} fw={700}>
-                Due Date:
-              </Text>
-              <Text>{formattedDate(selectedInvoice?.dueDate)}</Text>
-            </Group>
-            <Group>
-              <Text miw={120} fw={700}>
-                Amount:
-              </Text>
-              <Text>{formattedAmount(selectedInvoice?.amount)}</Text>
-            </Group>
-            <Group>
-              <Text miw={120} fw={700}>
-                Status:
-              </Text>
-              <Text>{selectedInvoice?.paid ? "Paid" : "Open"}</Text>
-            </Group>
-          </Stack>
-        </Container>
-      </Modal>
+      <Skeleton visible={status == "pending"}>
+        <Table highlightOnHover>
+          <Table.Thead className="bg-blue-100">
+            <Table.Tr>
+              <Table.Th>Date</Table.Th>
+              <Table.Th>Payee</Table.Th>
+              <Table.Th>Description</Table.Th>
+              <Table.Th>Due Date</Table.Th>
+              <Table.Th>Amount</Table.Th>
+              <Table.Th>Status</Table.Th>
+            </Table.Tr>
+          </Table.Thead>
+          <Table.Tbody>{rows}</Table.Tbody>
+        </Table>
+        <Modal
+          opened={opened}
+          onClose={onCloseModal}
+          title={<Title order={3}>Invoice Details</Title>}
+          overlayProps={{
+            backgroundOpacity: 0.3,
+          }}
+        >
+          <Container m={10}>
+            <Stack>
+              <Group>
+                <Text miw={120} fw={700}>
+                  Created At:
+                </Text>
+                <Text>{formattedDate(selectedInvoice?.createdAt)}</Text>
+              </Group>
+              <Group>
+                <Text miw={120} fw={700}>
+                  Updated At:
+                </Text>
+                <Text>{formattedDate(selectedInvoice?.updatedAt)}</Text>
+              </Group>
+              <Group>
+                <Text miw={120} fw={700}>
+                  Vendor Name:
+                </Text>
+                <Text>{selectedInvoice?.vendorName}</Text>
+              </Group>
+              <Group>
+                <Text miw={120} fw={700}>
+                  Description:
+                </Text>
+                <Text>{selectedInvoice?.description}</Text>
+              </Group>
+              <Group>
+                <Text miw={120} fw={700}>
+                  Due Date:
+                </Text>
+                <Text>{formattedDate(selectedInvoice?.dueDate)}</Text>
+              </Group>
+              <Group>
+                <Text miw={120} fw={700}>
+                  Amount:
+                </Text>
+                <Text>{formattedAmount(selectedInvoice?.amount)}</Text>
+              </Group>
+              <Group>
+                <Text miw={120} fw={700}>
+                  Status:
+                </Text>
+                <Text>{selectedInvoice?.paid ? "Paid" : "Open"}</Text>
+              </Group>
+            </Stack>
+          </Container>
+        </Modal>
+      </Skeleton>
     </Container>
   );
 };
