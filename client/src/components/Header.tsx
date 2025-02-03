@@ -1,6 +1,6 @@
 import { Button, Group, Text } from "@mantine/core";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { RootState } from "../app/store";
 import { logoutUser } from "../reducers/authSlice";
 
@@ -20,14 +20,22 @@ const Header = () => {
   };
 
   return (
-    <div>
+    <Group justify="space-between">
+      <Group justify="left" align="center" className="m-5">
+        <NavLink className="text-blue-700" to="/">
+          Home
+        </NavLink>
+        <NavLink className="text-blue-700" to="/invoices">
+          Invoices
+        </NavLink>
+      </Group>
       <Group justify="right" align="center" className="m-5">
         {userEmail && <Text>Logged in as {userEmail} </Text>}
         <Button variant="default" onClick={onLoginOrLogout}>
           Log {userEmail ? "out" : "in"}
         </Button>
       </Group>
-    </div>
+    </Group>
   );
 };
 

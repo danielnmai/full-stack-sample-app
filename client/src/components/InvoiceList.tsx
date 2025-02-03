@@ -50,7 +50,11 @@ const InvoiceList = () => {
   };
 
   const rows = invoices.map((invoice) => (
-    <Table.Tr key={invoice.id} onClick={() => onOpenModal(invoice)}>
+    <Table.Tr
+      className="cursor-pointer"
+      key={invoice.id}
+      onClick={() => onOpenModal(invoice)}
+    >
       <Table.Td>{formattedDate(invoice.createdAt)}</Table.Td>
       <Table.Td>{invoice.vendorName}</Table.Td>
       <Table.Td>{invoice.description}</Table.Td>

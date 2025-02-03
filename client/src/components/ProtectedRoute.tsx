@@ -7,9 +7,9 @@ const ProtectedRoute = () => {
 
   if (!userEmail) {
     return (
-      <div className="flex flex-col justify-center items-center ">
+      <div className="flex flex-col justify-center items-center">
         <h1 className="my-5">You must log in first.</h1>
-        <NavLink className="font-bold text-blue-700" to="/login">
+        <NavLink className="text-blue-700" to="/login">
           Login
         </NavLink>
       </div>
