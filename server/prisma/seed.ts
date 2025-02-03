@@ -13,7 +13,7 @@ const main = async () => {
       password: bcrypt.hashSync('1234', 10),
     },
   });
-  const invoice1 = await prisma.invoice.upsert({
+  await prisma.invoice.upsert({
     where: { id: 1 },
     update: {},
     create: {
@@ -21,12 +21,12 @@ const main = async () => {
       description: 'Office equipments',
       amount: 50000,
       dueDate: new Date('2025-12-1'),
-      paid: false,
+      paid: true,
       userId: user.id,
     },
   });
 
-  const invoice2 = await prisma.invoice.upsert({
+  await prisma.invoice.upsert({
     where: { id: 2 },
     update: {},
     create: {
@@ -39,7 +39,92 @@ const main = async () => {
     },
   });
 
-  console.log({ user, invoice1, invoice2 });
+  await prisma.invoice.upsert({
+    where: { id: 3 },
+    update: {},
+    create: {
+      vendorName: 'Sysco',
+      description: 'Rental',
+      amount: 49200,
+      dueDate: new Date('2025-12-1'),
+      paid: false,
+      userId: user.id,
+    },
+  });
+  await prisma.invoice.upsert({
+    where: { id: 4 },
+    update: {},
+    create: {
+      vendorName: 'Fiber Optics',
+      description: 'Rental',
+      amount: 22875,
+      dueDate: new Date('2025-12-1'),
+      paid: false,
+      userId: user.id,
+    },
+  });
+  await prisma.invoice.upsert({
+    where: { id: 5 },
+    update: {},
+    create: {
+      vendorName: 'Ikea',
+      description: 'Rental',
+      amount: 15087,
+      dueDate: new Date('2025-12-1'),
+      paid: false,
+      userId: user.id,
+    },
+  });
+  await prisma.invoice.upsert({
+    where: { id: 6 },
+    update: {},
+    create: {
+      vendorName: 'Costco',
+      description: 'Rental',
+      amount: 82000,
+      dueDate: new Date('2025-12-1'),
+      paid: true,
+      userId: user.id,
+    },
+  });
+  await prisma.invoice.upsert({
+    where: { id: 7 },
+    update: {},
+    create: {
+      vendorName: 'Costco',
+      description: 'Rental',
+      amount: 35000,
+      dueDate: new Date('2025-12-1'),
+      paid: true,
+      userId: user.id,
+    },
+  });
+
+  await prisma.invoice.upsert({
+    where: { id: 8 },
+    update: {},
+    create: {
+      vendorName: 'Office Depot',
+      description: 'Rental',
+      amount: 95000,
+      dueDate: new Date('2025-12-1'),
+      paid: false,
+      userId: user.id,
+    },
+  });
+
+  await prisma.invoice.upsert({
+    where: { id: 9 },
+    update: {},
+    create: {
+      vendorName: 'Staples',
+      description: 'Macbook Pro, quantity: 10',
+      amount: 2040000,
+      dueDate: new Date('2025-12-1'),
+      paid: true,
+      userId: user.id,
+    },
+  });
 };
 
 main()

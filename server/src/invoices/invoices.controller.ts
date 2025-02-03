@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import {
@@ -37,8 +38,8 @@ export class InvoicesController {
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOkResponse({ type: InvoiceEntity, isArray: true })
-  findAll() {
-    return this.invoicesService.findAll();
+  findAll(@Query('userId') userId: number) {
+    return this.invoicesService.findAll(+userId);
   }
 
   @Get(':id')

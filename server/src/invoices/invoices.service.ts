@@ -11,8 +11,8 @@ export class InvoicesService {
     return this.prisma.invoice.create({ data: createInvoiceDto });
   }
 
-  findAll() {
-    return this.prisma.invoice.findMany();
+  findAll(userId: number) {
+    return this.prisma.invoice.findMany({ where: { userId } });
   }
 
   findOne(id: number) {
