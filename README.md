@@ -30,7 +30,7 @@ $ cd server/
 $ yarn install
 ```
 
-### Run the PosgreSQL database. Make sure you have Docker installed.
+### Run the PosgreSQL database service. Make sure you have Docker installed
 
 ```bash
 $ docker-compose up
