@@ -1,5 +1,3 @@
-// src/articles/entities/article.entity.ts
-
 import { ApiProperty } from '@nestjs/swagger';
 import { Invoice } from '@prisma/client';
 
