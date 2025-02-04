@@ -16,7 +16,7 @@ $ yarn install
 $ yarn dev
 ```
 
-The app should be running at http://localhost:5173/. Please make sure you have the backend running and seed the data first. Then use this credentials to log in:
+The app should be running at http://localhost:5173. Please make sure you have the backend running and seed the data first. Then use this credential to log in:
 
 ```
 email: test@email.com
@@ -72,6 +72,6 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
-Make sure the server is running at http://localhost:3000/
+Make sure the server is running at http://localhost:3000
 
 You can view all the endpoints and Swagger documentation at http://localhost:3000/api
